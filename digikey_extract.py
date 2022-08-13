@@ -75,8 +75,6 @@ def get_orders_from_email_file(filename):
 def normalize_part_number(pn):
     return re.sub('[^a-zA-Z0-9_-]+', '_', pn)
 
-# 'raw/Thank you for your Digi-Key order! - Digi-Key <orders@t.digikey.com> - 2020-01-28 0006.eml'
-
 orders = []
 for email_filename in sys.argv[1:]:
     order_no = None
@@ -95,7 +93,3 @@ for email_filename in sys.argv[1:]:
             order_no = order.no
         orders.append({'no': order.no, 'part': order.part._asdict(), 'detail': order.detail._asdict()})
 print(json.dumps(orders, indent=2))
-
-# /html/body/table/tbody/tr/td/table/tbody/tr[1]/td/table/tbody/tr[13]/td/table/tbody/tr[1]/td/table[1]/tbody/tr/td[2]/strong[1]
-
-# .html.body.table.tbody.tr.td.table.tbody.
